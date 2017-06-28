@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-27T08:56:36.845Z</updated>
+  <updated>2017-06-28T02:41:54.395Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="http://yoursite.com/2017/06/27/Laravel-5-3-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89-Facade-%E7%9A%84%E6%AD%A5%E9%AA%A4/"/>
     <id>http://yoursite.com/2017/06/27/Laravel-5-3-下添加自定义-Facade-的步骤/</id>
     <published>2017-06-27T07:03:05.000Z</published>
-    <updated>2017-06-27T08:56:36.845Z</updated>
+    <updated>2017-06-28T02:41:54.395Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>原文链接 <a href="https://laravel-china.org/topics/3265/laravel-53-add-custom-facade-steps" target="_blank" rel="external">Laravel 5.3 下添加自定义 Facade 的步骤</a></p>
 </blockquote>
 <h5 id="1、目录结构"><a href="#1、目录结构" class="headerlink" title="1、目录结构"></a>1、目录结构</h5><p>我在 /app 下建立了一个自定义目录，结构如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/app</div><div class="line">|- Custom</div><div class="line">    |- Classes 这里放置自定义 Facade 所需的类</div><div class="line">    |- Facades 这里放置自定义 Facade</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h5 id="2、创建自定义-Facade-所需的类"><a href="#2、创建自定义-Facade-所需的类" class="headerlink" title="2、创建自定义 Facade 所需的类"></a>2、创建自定义 Facade 所需的类</h5><p>文件位置：<code>app/Custom/Classes/MLS.php</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Custom</span>\<span class="title">Classes</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MLS</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'MLS Test'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面这个 class 我只想实现一个功能，就是在调用 test() 方法时返回一个字符串。</p>
 <h5 id="3、创建自定义-Facade"><a href="#3、创建自定义-Facade" class="headerlink" title="3、创建自定义 Facade"></a>3、创建自定义 Facade</h5><p>文件位置：<code>app/Custom/Facades/MLS.php</code></p>
@@ -54,7 +55,10 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;原文链接 &lt;a href=&quot;https://laravel-china.org/topics/3265/laravel-53-add-custom-facade-steps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Larav
+&lt;p&gt;原文链接 &lt;a href=&quot;https://laravel-china.org/topics/3265/laravel-53-add-custom-facade-steps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Laravel 5.3 下添加自定义 Facade 的步骤&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;1、目录结构&quot;&gt;&lt;a href=&quot;#1、目录结构&quot; class=&quot;headerlink&quot; title=&quot;1、目录结构&quot;&gt;&lt;/a&gt;1、目录结构&lt;/h5&gt;&lt;p&gt;我在 /app 下建立了一个自定义目录，结构如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;/app&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;|- Custom&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    |- Classes 这里放置自定义 Facade 所需的类&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    |- Facades 这里放置自定义 Facade&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
