@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-29T04:29:17.336Z</updated>
+  <updated>2017-06-29T04:37:02.395Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/29/%E5%9C%A8laravel%E4%B8%AD%E4%BD%BF%E7%94%A8vue/"/>
     <id>http://yoursite.com/2017/06/29/在laravel中使用vue/</id>
     <published>2017-06-29T02:53:36.000Z</published>
-    <updated>2017-06-29T04:29:17.336Z</updated>
+    <updated>2017-06-29T04:37:02.395Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很喜欢<code>element-ui</code>，本来想完全前后端独立的，但是考虑到后面的菜单权限不是很好搞，就在 laravel 中混合使用 vue　吧，虽然显得不伦不类。。。<br>整体框架使用　<strong>admin-lte</strong>，然后里面组件是用 <strong>vue</strong></p>
 <a id="more"></a>
@@ -30,11 +30,11 @@
 <blockquote>
 <ul>
 <li><p><code>&lt;head&gt;</code>里面添加</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;   <span class="comment">&lt;!-- CSRF Token --&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"csrf-token"</span> <span class="attr">content</span>=<span class="string">"&#123;&#123; csrf_token() &#125;&#125;"</span>&gt;</span></div><div class="line">&gt;   <span class="comment">&lt;!-- Styles --&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; asset('css/app.css') &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- CSRF Token --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"csrf-token"</span> <span class="attr">content</span>=<span class="string">"&#123;&#123; csrf_token() &#125;&#125;"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- Styles --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; asset('css/app.css') &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p><code>&lt;div class=&quot;wrapper&quot;&gt;</code> 添加　<code>id=&quot;app&quot;</code>  </p>
 </li>
-<li><figure class="highlight plain"><figcaption><span>src="&#123;&#123; asset('vendor/arvin/js/admin.min.js') &#125;&#125;">```前添加 ```<script src="&#123;&#123; asset('js/app.js') &#125;&#125;"></script>```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3. 使用：</div><div class="line">    ```blade</div><div class="line">    @extends(&apos;arvin::layouts.default&apos;)</div><div class="line">    @section(&apos;content&apos;)</div><div class="line">        这里是 页面内容</div><div class="line">    @stop</div></pre></td></tr></table></figure>
+<li>最后面<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; asset('js/app.js') &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; asset('vendor/arvin/js/admin.min.js') &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
@@ -42,10 +42,17 @@
 </ol>
 <h4 id="安装element-ui"><a href="#安装element-ui" class="headerlink" title="安装element-ui"></a>安装<strong>element-ui</strong></h4><ol>
 <li>安装：　<code>npm i element-ui -D</code></li>
-<li><p>配置：<br> <code>resources/assets/js/app.js</code>里添加：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'element-ui'</span>);</div><div class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span>;</div></pre></td></tr></table></figure>
+<li>配置：<br> <code>resources/assets/js/app.js</code>里添加： <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'element-ui'</span>);</div><div class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span>;</div></pre></td></tr></table></figure>
 </li>
-<li><p>使用：<br> 例如添加一个自定义<strong>form</strong>组件:<br> 首先创建文件<code>resources/assets/js/components/Form.vue</code>,这里面就是用<em>element-ui</em>的组件了<br> 然后在<code>resources/assets/js/app.js</code>内添加组件<code>Vue.component(&#39;v-form&#39;, require(&#39;./components/Form.vue&#39;));</code>就可以在 blade　里面使用了<code>&lt;v-form&gt;&lt;/v-form&gt;</code></p>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>例如添加一个自定义<strong>form</strong>组件:<ol>
+<li>首先创建文件<code>resources/assets/js/components/Form.vue</code>,这里面就是用<em>element-ui</em>的组件了  </li>
+<li>然后在<code>resources/assets/js/app.js</code>内添加组件<code>Vue.component(&#39;v-form&#39;, require(&#39;./components/Form.vue&#39;))</code>;   </li>
+<li>就可以在 blade　里面使用了<code>&lt;v-form&gt;&lt;/v-form&gt;</code></li>
+</ol>
+</li>
+<li>使用： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;arvin::layouts.default&apos;)</div><div class="line">@section(&apos;content&apos;)</div><div class="line">    &lt;v-form&gt;&lt;/v-form&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
 </li>
 </ol>
 ]]></content>
