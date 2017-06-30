@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-29T10:33:12.727Z</updated>
+  <updated>2017-06-30T06:26:52.749Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,20 +16,78 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>poker2自定义键位</title>
+    <link href="http://yoursite.com/2017/06/30/poker2%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%AE%E4%BD%8D/"/>
+    <id>http://yoursite.com/2017/06/30/poker2自定义键位/</id>
+    <published>2017-06-30T05:54:18.000Z</published>
+    <updated>2017-06-30T06:26:52.749Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>固件版本：1.03.03</p>
+</blockquote>
+<h4 id="New-Features"><a href="#New-Features" class="headerlink" title="New Features"></a>New Features</h4><ul>
+<li>Fn layer now supports Macros</li>
+<li>You can now move any pre-programmed Fn key to any other key, for example:</li>
+</ul>
+<p>Arrow keys are pre-programmed by default on WASD keys by pressing Fn + any of these keys.</p>
+<p>You can now move the arrow keys on the Fn layer to any other key, example below:</p>
+<ul>
+<li>Select a layer (1,2,3) by pressing Fn + C,V or B</li>
+<li>Press Fn + right CTRL to enter the programming mode</li>
+<li>Press Fn + the key you want to move the arrow to, for example Fn + L</li>
+<li>Press Fn + W to move the Up arrow to the L key, or A for left arrow, or S or D</li>
+<li>Press Pn key to save your change</li>
+<li>Press Fn + right CTRL to exit the programming mode</li>
+</ul>
+<p>Repeat this sequence to move any Fn layer key around (note that you don’t have to exit the programming mode every time, you can simply keep on moving keys around after you have pressed the Pn key to save your modification).</p>
+<ul>
+<li>Fn + Shift + ESC now inputs ~</li>
+<li><p>Fn + ESC now inputs `</p>
+</li>
+<li><p>Fn + Z switch automatically to Default layer.</p>
+</li>
+<li>Fn + C/V/B allows you to access the layers 1/2/3</li>
+<li>Fn + Right Shift still allows you to switch between layers</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;固件版本：1.03.03&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;New-Features&quot;&gt;&lt;a href=&quot;#New-Features&quot; class=&quot;headerlink&quot; title=&quot;New Features&quot;&gt;&lt;/a&gt;New
+    
+    </summary>
+    
+      <category term="其他" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+      <category term="键盘" scheme="http://yoursite.com/tags/%E9%94%AE%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在laravel中使用vue——变量使用篇</title>
     <link href="http://yoursite.com/2017/06/29/%E5%9C%A8laravel%E4%B8%AD%E4%BD%BF%E7%94%A8vue%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E7%AF%87/"/>
     <id>http://yoursite.com/2017/06/29/在laravel中使用vue——变量使用篇/</id>
     <published>2017-06-29T10:14:45.000Z</published>
-    <updated>2017-06-29T10:33:12.727Z</updated>
+    <updated>2017-06-30T01:14:55.434Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><a href="/2017/06/27/Laravel-5-3-下添加自定义-Facade-的步骤/" title="上一篇">上一篇</a>写了在 <em>laravel</em>中配置<em>vue</em>,本篇写写变量如何使用<br><br>### 实战<br>#### 首先在<code>controller</code>里面传递变量到<em>blade</em>模板：<br>    <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$user = User::find(<span class="number">1</span>)-&gt;toJson();</div><div class="line"><span class="keyword">return</span> view(<span class="string">'home'</span>, compact(<span class="string">'user'</span>));</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><a href="/2017/06/27/Laravel-5-3-下添加自定义-Facade-的步骤/" title="上一篇">上一篇</a>
+<p> 讲了在 <em>laravel</em>中配置<em>vue</em>,本篇说说变量如何使用</p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><h4 id="首先在controller里面传递变量到blade模板："><a href="#首先在controller里面传递变量到blade模板：" class="headerlink" title="首先在controller里面传递变量到blade模板："></a>首先在<code>controller</code>里面传递变量到<em>blade</em>模板：</h4><pre><code><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$user = User::find(<span class="number">1</span>)-&gt;toJson();</div><div class="line"><span class="keyword">return</span> view(<span class="string">'home'</span>, compact(<span class="string">'user'</span>));</div></pre></td></tr></table></figure>
+</code></pre><a id="more"></a>
 <h4 id="然后在模板里面使用："><a href="#然后在模板里面使用：" class="headerlink" title="然后在模板里面使用："></a>然后在模板里面使用：</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;v-form :user=&quot;&#123;&#123; $user &#125;&#125;&quot;&gt;&lt;/v-form&gt;</div></pre></td></tr></table></figure>
 </code></pre><h4 id="组件里面配置如下："><a href="#组件里面配置如下：" class="headerlink" title="组件里面配置如下："></a>组件里面配置如下：</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">data() &#123;</div><div class="line">    return &#123;</div><div class="line">        ruleForm: &#123;</div><div class="line">            name: this.user.name,</div><div class="line">            email: this.user.email</div><div class="line">        &#125;,</div><div class="line">    &#125;;</div><div class="line">&#125;,</div><div class="line">props: [&apos;user&apos;],</div><div class="line">...</div></pre></td></tr></table></figure>
 </code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;a href=&quot;/2017/06/27/Laravel-5-3-下添加自定义-Facade-的步骤/&quot; title=&quot;上一篇&quot;&gt;上一篇&lt;/a&gt;写
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;a href=&quot;/2017/06/27/Laravel-5-3-下添加自定义-Facade-的步骤/&quot; title=&quot;上一篇&quot;&gt;上一篇&lt;/a&gt;
+&lt;p&gt; 讲了在 &lt;em&gt;laravel&lt;/em&gt;中配置&lt;em&gt;vue&lt;/em&gt;,本篇说说变量如何使用&lt;/p&gt;
+&lt;h3 id=&quot;实战&quot;&gt;&lt;a href=&quot;#实战&quot; class=&quot;headerlink&quot; title=&quot;实战&quot;&gt;&lt;/a&gt;实战&lt;/h3&gt;&lt;h4 id=&quot;首先在controller里面传递变量到blade模板：&quot;&gt;&lt;a href=&quot;#首先在controller里面传递变量到blade模板：&quot; class=&quot;headerlink&quot; title=&quot;首先在controller里面传递变量到blade模板：&quot;&gt;&lt;/a&gt;首先在&lt;code&gt;controller&lt;/code&gt;里面传递变量到&lt;em&gt;blade&lt;/em&gt;模板：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$user = User::find(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)-&amp;gt;toJson();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; view(&lt;span class=&quot;string&quot;&gt;&#39;home&#39;&lt;/span&gt;, compact(&lt;span class=&quot;string&quot;&gt;&#39;user&#39;&lt;/span&gt;));&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
