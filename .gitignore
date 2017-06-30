@@ -3,3 +3,4 @@ public
 *.log
 db.json
 .idea
+.deploy_git
