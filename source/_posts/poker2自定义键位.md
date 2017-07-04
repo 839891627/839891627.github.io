@@ -29,7 +29,6 @@ Repeat this sequence to move any Fn layer key around (note that you don't have t
 
 - Fn + Shift + ESC now inputs ~
 - Fn + ESC now inputs `
-
 - Fn + Z switch automatically to Default layer.
 - Fn + C/V/B allows you to access the layers 1/2/3
 - Fn + Right Shift still allows you to switch between layers
