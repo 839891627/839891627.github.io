@@ -65,5 +65,6 @@ st->op1->op2->op3->op4->op5->op6->op7->e
 2. 发送到持久化的交换器
 3. 到达持久化的队列
 
-[代码笔记](https://github.com/839891627/rmq-notes)
+#### 代码
+**[代码笔记](https://github.com/839891627/rmq-notes)**
  

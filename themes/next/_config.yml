@@ -36,7 +36,7 @@ seo: false
 
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
-index_with_subtitle: false
+index_with_subtitle: true
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -187,15 +187,15 @@ toc:
 sidebar:
   # Sidebar Position, available value: left | right
   position: left
-  #position: right
+#  position: right
 
   # Sidebar Display, available value:
   #  - post    expand on posts automatically. Default.
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
-  #display: always
+#  display: post
+  display: always
   #display: hide
   #display: remove
 
@@ -311,7 +311,7 @@ baidu_analytics: 1231fc8ef28fc3a301fd355654217760
 
 # Disqus 太卡了
 disqus:
-  enable: false
+  enable: true
   shortname: arvin-2
   count: true
 
