@@ -1,6 +1,6 @@
 ---
 title: gitlab搭建笔记
-date: 2017-07-11 15:20:21
+date: 2017-07-13 15:20:21
 categories: 编程
 tags: gitlab
 ---
@@ -8,8 +8,8 @@ tags: gitlab
 ### 安装篇(docker安装)
 1. `sudo apt install docker`
 2. `sudo apt install docker-compose`
-3. 新建 docker配置文件 ``docker-compose.yml`,配置如下：  
 <!-- more -->
+3. 新建 docker配置文件 `docker-compose.yml`,配置如下：  
 ```yml
 web:
   image: 'gitlab/gitlab-ce:latest'
@@ -28,8 +28,8 @@ web:
     - '/srv/gitlab/logs:/var/log/gitlab'
     - '/srv/gitlab/data:/var/opt/gitlab'
 ```
-  执行`docker-compose up -d`启动 （不加 `-d` 可以查看启动过程日志）
-4. 启动完毕即可以登录上面配置的 ip地址访问gitlab web端(默认端口 80)
+4. 下载启动gitlab镜像：`docker-compose up -d` （不加 `-d` 可以查看启动过程日志）
+5. 启动完毕即可以登录上面配置的 ip地址访问gitlab web端(默认端口 80)
 
 ### 配置篇
 #### 去除注册功能
@@ -44,7 +44,7 @@ web:
 #### 配置通知邮箱,这里采用*smtp*邮箱： 
 > smtp相关部分，例如配置qq、163等，参照 [这里](https://docs.gitlab.com.cn/omnibus/settings/smtp.html#outlook)  
     
-gmail 如下：  
+outlook邮箱如下：  
 ```
 gitlab_rails['smtp_enable'] = true
 gitlab_rails['smtp_address'] = "smtp-mail.outlook.com"
