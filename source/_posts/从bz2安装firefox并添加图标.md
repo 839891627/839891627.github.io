@@ -18,7 +18,7 @@ tags:
 
 5. > sudo vi firefox.desktop  
 
-```flow js
+```
 [Desktop Entry]  
 Name=Firefox 57.0
 Comment=firefox
