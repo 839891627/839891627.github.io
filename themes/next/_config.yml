@@ -211,11 +211,12 @@ sidebar:
 
 
 # Blog rolls
-#links_title: Links
+links_title: 友链
 #links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  南丞嘚吧嘚: http://friday-go.cc/
+  Laravel China: https://laravel-china.org/
 
 
 # ---------------------------------------------------------------
