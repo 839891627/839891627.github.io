@@ -11,11 +11,11 @@ tags:
 ```php
     /**
      * 数据签名
-     * @param $data
-     * @param $privateCertPath
-     * @return string
+     * @param string|array $data             原始数据
+     * @param string       $privateCertPath  私钥地址
+     * @return string                        签名数据
      */
-    public static function sign(string $data, $privateCertPath)
+    public static function sign($data, $privateCertPath)
     {
         $data       = is_array($data) ? base64_encode(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) : $data;
         $privateKey = file_get_contents($privateCertPath);
@@ -31,9 +31,9 @@ tags:
 
     /**
      * 签名验证
-     * @param        $data
-     * @param string $sign
-     * @param string $publicCertPath
+     * @param string|array   $data  原始数据
+     * @param string         $sign  原始数据的签名
+     * @param string         $publicCertPath  公钥地址
      * @return bool
      */
     public static function verify($data, string $sign, $publicCertPath)
@@ -46,6 +46,5 @@ tags:
 
         return $isValid;
     }
-
 
 ```
