@@ -526,9 +526,9 @@
       <category term="编程" scheme="http://yoursite.com/categories/programming/"/>
     
     
-      <category term="php" scheme="http://yoursite.com/tags/php/"/>
-    
       <category term="laravel" scheme="http://yoursite.com/tags/laravel/"/>
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
     
   </entry>
   
