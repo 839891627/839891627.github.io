@@ -7,7 +7,7 @@ tags: php
 
 ## 问题
 element-ui　表格使用的时候，出现宽度无线扩大的情况。
-![a.gif](a.gif)
+![](https://ws1.sinaimg.cn/large/74f12897gy1g0rn7gxsbvj20sg0sg7id.jpg)
 
 ## 解决
 ```css
