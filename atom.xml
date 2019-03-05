@@ -74,15 +74,15 @@
     <link href="http://yoursite.com/2018/01/22/element-ui%E8%A7%A3%E5%86%B3%E8%A1%A8%E6%A0%BC%E6%97%A0%E9%99%90%E6%89%A9%E5%A4%A7%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2018/01/22/element-ui解决表格无限扩大问题/</id>
     <published>2018-01-22T09:55:13.000Z</published>
-    <updated>2019-03-01T06:31:25.089Z</updated>
+    <updated>2019-03-05T01:06:10.994Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>element-ui　表格使用的时候，出现宽度无线扩大的情况。<br><img src="/2018/01/22/element-ui解决表格无限扩大问题/a.gif" alt="a.gif"></p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.el-table__header</span>, <span class="selector-class">.el-table__body</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">table-layout</span>: auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>element-ui　表格使用的时候，出现宽度无线扩大的情况。<br><img src="https://ws1.sinaimg.cn/large/74f12897gy1g0rn7gxsbvj20sg0sg7id.jpg" alt></p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.el-table__header</span>, <span class="selector-class">.el-table__body</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">table-layout</span>: auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;element-ui　表格使用的时候，出现宽度无线扩大的情况。&lt;br&gt;&lt;img src=&quot;/2018/01/22/element-ui解决表
+        &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;element-ui　表格使用的时候，出现宽度无线扩大的情况。&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/la
       
     
     </summary>
@@ -526,9 +526,9 @@
       <category term="编程" scheme="http://yoursite.com/categories/programming/"/>
     
     
-      <category term="laravel" scheme="http://yoursite.com/tags/laravel/"/>
-    
       <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="laravel" scheme="http://yoursite.com/tags/laravel/"/>
     
   </entry>
   
