@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.css.network/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="gitlab,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="arvin's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="安装篇(docker安装) sudo apt install docker sudo apt install docker-compose">
+<meta name="keywords" content="gitlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlab搭建笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/gitlab搭建笔记/index.html">
+<meta property="og:site_name" content="arvin&#39;s blog">
+<meta property="og:description" content="安装篇(docker安装) sudo apt install docker sudo apt install docker-compose">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/07/13/gitlab搭建笔记/docker-compose.png">
+<meta property="og:updated_time" content="2019-03-01T06:31:25.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitlab搭建笔记">
+<meta name="twitter:description" content="安装篇(docker安装) sudo apt install docker sudo apt install docker-compose">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/13/gitlab搭建笔记/docker-compose.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/13/gitlab搭建笔记/">
+
+
+
+
+
+  <title>gitlab搭建笔记 | arvin's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">arvin's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/gitlab搭建笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="arvin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/10300651?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="arvin's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">gitlab搭建笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T15:20:21+08:00">
+                2017-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/13/gitlab搭建笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/13/gitlab搭建笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="安装篇-docker安装"><a href="#安装篇-docker安装" class="headerlink" title="安装篇(docker安装)"></a>安装篇(docker安装)</h3><ol>
+<li><code>sudo apt install docker</code></li>
+<li><code>sudo apt install docker-compose</code><a id="more"></a></li>
+<li><p>新建 docker配置文件 <code>docker-compose.yml</code>,配置如下：  </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">web:</span></span><br><span class="line"><span class="attr">  image:</span> <span class="string">'gitlab/gitlab-ce:latest'</span></span><br><span class="line"><span class="attr">  restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">  hostname:</span> <span class="string">'gitlab.example.com'</span> <span class="comment"># 此处填写服务器的 ip</span></span><br><span class="line"><span class="attr">  environment:</span></span><br><span class="line"><span class="attr">    GITLAB_OMNIBUS_CONFIG:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      external_url 'https://gitlab.example.com' # 同理，填写 ip</span></span><br><span class="line"><span class="string">      # Add any other gitlab.rb configuration here, each on its own line</span></span><br><span class="line"><span class="string"></span><span class="attr">  ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'80:80'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'443:443'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'22:22'</span> <span class="comment"># 格式为： 本机端口：docker端口， 如果后面运行端口被占用，可以修改此处配置</span></span><br><span class="line"><span class="attr">  volumes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'/srv/gitlab/config:/etc/gitlab'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'/srv/gitlab/logs:/var/log/gitlab'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'/srv/gitlab/data:/var/opt/gitlab'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载启动gitlab镜像：<code>docker-compose up -d</code> （不加 <code>-d</code> 可以查看启动过程日志）</p>
+</li>
+<li>启动完毕即可以登录上面配置的 ip地址访问gitlab web端(默认端口 80)</li>
+</ol>
+<h3 id="配置篇"><a href="#配置篇" class="headerlink" title="配置篇"></a>配置篇</h3><h4 id="去除注册功能"><a href="#去除注册功能" class="headerlink" title="去除注册功能"></a>去除注册功能</h4><ol>
+<li>这个可以直接在web端，通过管理员身份进行设置<br>关闭<code>Sign-up enabled</code> 选项即可</li>
+</ol>
+<h4 id="修改docker配置"><a href="#修改docker配置" class="headerlink" title="修改docker配置　　"></a>修改docker配置　　</h4><ol>
+<li>首先运行：<code>docker ps</code> 查看容器名称   </li>
+<li>修改配置：<code>docker exec -it 容器名称  vi /etc/gitlab/gitlab.rb</code>  </li>
+<li>重载配置：<code>docker exec -it 容器名称  gitlab-ctl reconfigure</code>  </li>
+</ol>
+<h4 id="配置通知邮箱-这里采用smtp邮箱："><a href="#配置通知邮箱-这里采用smtp邮箱：" class="headerlink" title="配置通知邮箱,这里采用smtp邮箱："></a>配置通知邮箱,这里采用<em>smtp</em>邮箱：</h4><blockquote>
+<p>smtp相关部分，例如配置qq、163等，参照 <a href="https://docs.gitlab.com.cn/omnibus/settings/smtp.html#outlook" target="_blank" rel="noopener">这里</a>  </p>
+</blockquote>
+<p>outlook邮箱如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[&apos;smtp_enable&apos;] = true</span><br><span class="line">gitlab_rails[&apos;smtp_address&apos;] = &quot;smtp-mail.outlook.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_port&apos;] = 587</span><br><span class="line">gitlab_rails[&apos;smtp_user_name&apos;] = &quot;username@outlook.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_password&apos;] = &quot;password&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_domain&apos;] = &quot;smtp-mail.outlook.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_authentication&apos;] = &quot;login&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_enable_starttls_auto&apos;] = true</span><br><span class="line">gitlab_rails[&apos;smtp_openssl_verify_mode&apos;] = &apos;peer&apos;</span><br></pre></td></tr></table></figure></p>
+<h4 id="验证邮箱是否配置成功："><a href="#验证邮箱是否配置成功：" class="headerlink" title="验证邮箱是否配置成功："></a>验证邮箱是否配置成功：</h4><ol>
+<li>运行：<code>docker exec -it 容器名称  gitlab-rails console</code>  <blockquote>
+<p>irb(main):003:0&gt; Notify.test_email(<a href="mailto:&#39;destination_email@address.com" target="_blank" rel="noopener">&#39;destination_email@address.com</a>‘, ‘Message Subject’, ‘Message Body’).deliver_now</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><h6 id="docker相关错误"><a href="#docker相关错误" class="headerlink" title="docker相关错误"></a>docker相关错误</h6><p><img src="/2017/07/13/gitlab搭建笔记/docker-compose.png" alt></p>
+<h6 id="outlook邮箱配置错误"><a href="#outlook邮箱配置错误" class="headerlink" title="outlook邮箱配置错误"></a>outlook邮箱配置错误</h6><ul>
+<li>unable to send and recivie emails error code: 535 5.0.0 Authentication Failed code(535)<br><strong>解决：</strong> <a href="https://answers.microsoft.com/en-us/outlook_com/forum/oemail-osend/unable-to-send-and-recivie-emails-error-code-535/15db149b-403a-4de7-8ef1-6cdeda9327de" target="_blank" rel="noopener">https://answers.microsoft.com/en-us/outlook_com/forum/oemail-osend/unable-to-send-and-recivie-emails-error-code-535/15db149b-403a-4de7-8ef1-6cdeda9327de</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/04/设计模式之单例模式/" rel="next" title="设计模式-- 单例模式">
+                <i class="fa fa-chevron-left"></i> 设计模式-- 单例模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/17/navicat破解方法/" rel="prev" title="navicat破解方法">
+                navicat破解方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/10300651?v=3&s=460" alt="arvin">
+          <p class="site-author-name" itemprop="name">arvin</p>
+           
+              <p class="site-description motion-element" itemprop="description">学习点滴记录</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/839891627" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://segmentfault.com/u/arvin_cao" target="_blank" title="SegmentFault">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友链
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://friday-go.cc/" title="南丞嘚吧嘚" target="_blank">南丞嘚吧嘚</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://laravel-china.org/" title="Laravel China" target="_blank">Laravel China</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装篇-docker安装"><span class="nav-number">1.</span> <span class="nav-text">安装篇(docker安装)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置篇"><span class="nav-number">2.</span> <span class="nav-text">配置篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#去除注册功能"><span class="nav-number">2.1.</span> <span class="nav-text">去除注册功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改docker配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改docker配置　　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置通知邮箱-这里采用smtp邮箱："><span class="nav-number">2.3.</span> <span class="nav-text">配置通知邮箱,这里采用smtp邮箱：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证邮箱是否配置成功："><span class="nav-number">2.4.</span> <span class="nav-text">验证邮箱是否配置成功：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误"><span class="nav-number">2.5.</span> <span class="nav-text">错误</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#docker相关错误"><span class="nav-number">2.5.0.1.</span> <span class="nav-text">docker相关错误</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#outlook邮箱配置错误"><span class="nav-number">2.5.0.2.</span> <span class="nav-text">outlook邮箱配置错误</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arvin</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/lazyload/2.0.3/lazyload-min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://arvin-2.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/13/gitlab搭建笔记/';
+          this.page.identifier = '2017/07/13/gitlab搭建笔记/';
+          this.page.title = 'gitlab搭建笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://arvin-2.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
