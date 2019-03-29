@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-12T10:38:23.628Z</updated>
+  <updated>2019-03-29T03:48:55.208Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用PHP压缩并base64编码图片</title>
+    <link href="http://yoursite.com/2019/03/29/%E4%BD%BF%E7%94%A8PHP%E5%8E%8B%E7%BC%A9%E5%B9%B6base64%E7%BC%96%E7%A0%81%E5%9B%BE%E7%89%87/"/>
+    <id>http://yoursite.com/2019/03/29/使用PHP压缩并base64编码图片/</id>
+    <published>2019-03-29T03:44:53.000Z</published>
+    <updated>2019-03-29T03:48:55.208Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><ul><li>图片 base64 的目的不是减小其大小，而是嵌入在网页中，以此避免浏览器再去对图片发送另一个单独的请求的开销</li><li>图片 base64 后会变大为原来的 4/3</li></ul></blockquote><a id="more"></a><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Image</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片 base64 压缩并编码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $image_file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">base64EncodeImage</span><span class="params">($image_file)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $tmpImg = <span class="keyword">__DIR__</span> . <span class="string">'/tmp_compressed_img.jpg'</span>; <span class="comment">// 图片压缩临时文件</span></span><br><span class="line">        <span class="keyword">self</span>::compress($image_file, $tmpImg); <span class="comment">// 压缩图片</span></span><br><span class="line"></span><br><span class="line">        $base64_image = <span class="string">''</span>;</span><br><span class="line">        $image_info = getimagesize($tmpImg);</span><br><span class="line">        $image_data = fread(fopen($tmpImg, <span class="string">'r'</span>), filesize($tmpImg));</span><br><span class="line">        $base64_image = <span class="string">'data:'</span> . $image_info[<span class="string">'mime'</span>] . <span class="string">';base64,'</span> . chunk_split(base64_encode($image_data));</span><br><span class="line"></span><br><span class="line">        unlink($tmpImg); <span class="comment">// 删除临时图片</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $base64_image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片压缩</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $source string 源文件地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $destination string 存放压缩后文件地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $quality int 压缩质量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">compress</span><span class="params">($source, $destination, $quality = <span class="number">75</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $info = getimagesize($source);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($info[<span class="string">'mime'</span>] == <span class="string">'image/jpeg'</span>) &#123;</span><br><span class="line">            $image = imagecreatefromjpeg($source);</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($info[<span class="string">'mime'</span>] == <span class="string">'image/gif'</span>) &#123;</span><br><span class="line">            $image = imagecreatefromgif($source);</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($info[<span class="string">'mime'</span>] == <span class="string">'image/png'</span>) &#123;</span><br><span class="line">            $image = imagecreatefrompng($source);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        imagejpeg($image, $destination, $quality);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $destination;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$source = <span class="string">'/Users/caojinliang/Downloads/Abstract 2.jpg'</span>;</span><br><span class="line">$img = Image::base64EncodeImage($source);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;img src='$img' width='800' height='600'&gt;"</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;图片 base64 的目的不是减小其大小，而是嵌入在网页中，以此避免浏览器再去对图片发送另一个单独的请求的开销&lt;/li&gt;
+&lt;li&gt;图片 base64 后会变大为原来的 4/3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="http://yoursite.com/categories/programming/"/>
+    
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="图片" scheme="http://yoursite.com/tags/%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
   
   <entry>
     <title>在终端中使用代理-proxychains</title>
@@ -493,30 +522,6 @@
 &lt;p&gt; 讲了在 &lt;em&gt;laravel&lt;/em&gt;中配置&lt;em&gt;vue&lt;/em&gt;,本篇说说变量如何使用&lt;/p&gt;
 &lt;h3 id=&quot;实战&quot;&gt;&lt;a href=&quot;#实战&quot; class=&quot;headerlink&quot; title=&quot;实战&quot;&gt;&lt;/a&gt;实战&lt;/h3&gt;&lt;h4 id=&quot;首先在controller里面传递变量到blade模板：&quot;&gt;&lt;a href=&quot;#首先在controller里面传递变量到blade模板：&quot; class=&quot;headerlink&quot; title=&quot;首先在controller里面传递变量到blade模板：&quot;&gt;&lt;/a&gt;首先在&lt;code&gt;controller&lt;/code&gt;里面传递变量到&lt;em&gt;blade&lt;/em&gt;模板：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$user = User::find(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)-&amp;gt;toJson();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; view(&lt;span class=&quot;string&quot;&gt;&#39;home&#39;&lt;/span&gt;, compact(&lt;span class=&quot;string&quot;&gt;&#39;user&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="编程" scheme="http://yoursite.com/categories/programming/"/>
-    
-    
-      <category term="laravel" scheme="http://yoursite.com/tags/laravel/"/>
-    
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在laravel中使用vue——配置篇</title>
-    <link href="http://yoursite.com/2017/06/29/%E5%9C%A8laravel%E4%B8%AD%E4%BD%BF%E7%94%A8vue/"/>
-    <id>http://yoursite.com/2017/06/29/在laravel中使用vue/</id>
-    <published>2017-06-29T02:53:36.000Z</published>
-    <updated>2019-03-01T06:31:25.099Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很喜欢<code>element-ui</code>，本来想完全前后端独立的，但是考虑到后面的菜单权限不是很好搞，就在 laravel 中混合使用 vue　吧，虽然显得不伦不类。。。<br>整体框架使用　<strong>admin-lte</strong>，然后里面组件是用 <strong>vue</strong></p><a id="more"></a><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装admin-lte"><a href="#安装admin-lte" class="headerlink" title="安装admin-lte"></a>安装<strong>admin-lte</strong></h4><ol><li>安装： <code>composer require arvin/adminlte-for-laravel</code></li><li><p>配置：<br> 2.1. 添加 <code>Arvin\Admin\Providers\ArvinServiceProvider::class</code>, 到 <code>config/app.php</code>的providers<br> 2.2. <code>php artisan vendor:publish</code><br> 2.3. <code>resources/views/vendor/arvin/layouts/default.blade.php</code>文件，  </p><blockquote><ul><li><code>&lt;head&gt;</code>里面添加<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- CSRF Token --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"csrf-token"</span> <span class="attr">content</span>=<span class="string">"&#123;&#123; csrf_token() &#125;&#125;"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Styles --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; asset('css/app.css') &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></blockquote><blockquote><ul><li><code>&lt;div class=&quot;wrapper&quot;&gt;</code> 添加　<code>id=&quot;app&quot;</code>  </li><li>最后面<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; asset('js/app.js') &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; asset('vendor/arvin/js/admin.min.js') &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></blockquote></li></ol><h4 id="安装element-ui"><a href="#安装element-ui" class="headerlink" title="安装element-ui"></a>安装<strong>element-ui</strong></h4><ol><li>安装：　<code>npm i element-ui -D</code></li><li>配置：<br> <code>resources/assets/js/app.js</code>里添加： <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'element-ui'</span>);</span><br><span class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span>;</span><br></pre></td></tr></table></figure></li></ol><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol><li>例如添加一个自定义<strong>form</strong>组件:<ol><li>首先创建文件<code>resources/assets/js/components/Form.vue</code>,这里面就是用<em>element-ui</em>的组件了  </li><li>然后在<code>resources/assets/js/app.js</code>内添加组件<code>Vue.component(&#39;v-form&#39;, require(&#39;./components/Form.vue&#39;))</code>;   </li><li>就可以在 blade　里面使用了<code>&lt;v-form&gt;&lt;/v-form&gt;</code></li></ol></li><li>使用： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@extends(&apos;arvin::layouts.default&apos;)</span><br><span class="line">@section(&apos;content&apos;)</span><br><span class="line">    &lt;v-form&gt;&lt;/v-form&gt;</span><br><span class="line">@stop</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;很喜欢&lt;code&gt;element-ui&lt;/code&gt;，本来想完全前后端独立的，但是考虑到后面的菜单权限不是很好搞，就在 laravel 中混合使用 vue　吧，虽然显得不伦不类。。。&lt;br&gt;整体框架使用　&lt;strong&gt;admin-lte&lt;/strong&gt;，然后里面组件是用 &lt;strong&gt;vue&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
