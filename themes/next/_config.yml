@@ -95,7 +95,7 @@ font:
   enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default)
-  host: https://fonts.css.network
+#  host: https://cdn.bootcss.com/font-awesome/5.12.1/css/all.css
 
   # Global font settings used on <body> element.
   global:
@@ -163,7 +163,7 @@ social_icons:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
-avatar: https://avatars0.githubusercontent.com/u/10300651?v=3&s=460
+#avatar: https://avatars0.githubusercontent.com/u/10300651?v=3&s=460
 
 
 # Table Of Contents in the Sidebar
@@ -305,14 +305,14 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-baidu_analytics: 1231fc8ef28fc3a301fd355654217760
+#baidu_analytics: 1231fc8ef28fc3a301fd355654217760
 
 # Duoshuo ShortName
 #duoshuo_shortname:
 
 # Disqus 太卡了
 disqus:
-  enable: true
+  enable: false
   shortname: arvin-2
   count: true
 
