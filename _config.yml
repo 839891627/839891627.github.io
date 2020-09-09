@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: arvin's blog
-subtitle:
-description: 学习点滴记录
+title: 呜拉
+subtitle: arvin 的 不唠嗑
+description: 没事记(挤)一点
 author: arvin
 language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://wulaaa.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -71,7 +71,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: tranquilpeak
-theme: next
+theme: pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
